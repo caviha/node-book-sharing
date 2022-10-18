@@ -42,11 +42,7 @@ app.listen(PORT, ()=>{
 mongoose.connect("mongodb://localhost:27017/onBook")
 .then(()=>{
   console.log("MongoDb connected")
-})
-
-
-
-/*const CONNECTION_URL = "mongodb+srv://onBook:file13230@cluster0.3m4rhea.mongodb.net/?retryWrites=true&w=majority";
+});
 const PORT = process.env.PORT || 5000;
 Mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
   console.log("Server Start at port:" +PORT);*/
