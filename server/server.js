@@ -1,0 +1,67 @@
+
+const express = require('express');
+const PORT = process.env.PORT || 5000;
+const bodyparser = require('body-parser');
+const cookieParser = require('cookie-parser')
+const cors = require('cors');
+const userRoutes = require('./routes/user');
+const bookRoutes = require('./routes/bookRoute');
+const mongoose = require('mongoose');
+const CONNECTION_URL = "mongodb+srv://caviha:file13230@cluster0.elodhim.mongodb.net/?retryWrites=true&w=majority";
+const app = express();
+
+
+app.use(bodyparser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyparser.json());
+app.use(cookieParser());
+
+  
+  app.use(cors());
+  app.use(express.json());// allows us to handle incoming json data from the request body
+app.use('/user', userRoutes);
+app.use('/book', bookRoutes);
+ 
+
+
+
+
+
+require('dotenv').config();
+
+
+app.enable('trust proxy');
+
+
+app.listen(PORT, ()=>{
+  console.log("Server running on", PORT)
+});
+
+
+mongoose.connect("mongodb://localhost:27017/onBook")
+.then(()=>{
+  console.log("MongoDb connected")
+})
+
+
+
+/*const CONNECTION_URL = "mongodb+srv://onBook:file13230@cluster0.3m4rhea.mongodb.net/?retryWrites=true&w=majority";
+const PORT = process.env.PORT || 5000;
+Mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+  console.log("Server Start at port:" +PORT);*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
